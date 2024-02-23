@@ -1,0 +1,36 @@
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+}
+.m-auto {
+    margin: auto !important;
+    
+}
+.w-100 {
+    width: 100%!important;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+main {
+    display: block;
+}
+.weather-info{
+  margin-right: 40px;
+  
+}
+.kg-item{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.kg-heading{
+  margin-right:50px ;
+}
+.buton{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.user-data{
+  padding: 10%;
+}

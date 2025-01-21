@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useFirebase } from "../store/firebase";
+import {key,url} from "../store/firebase";
 
 export const Dashboard = () => {
     const [weatherData, setWeatherData] = useState({});
@@ -11,8 +12,8 @@ export const Dashboard = () => {
     const [sortOrder, setSortOrder] = useState("asc");
 
     useEffect(() => {
-        const apiKey = "03f7c2d4680e71c9b1e2996aaf085764";
-        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+        const apiKey = key;
+        const apiUrl = url;
         fetch(apiUrl + currCity + `&appid=${apiKey}`)
             .then((res) => res.json())
             .then((data) => setWeatherData(data))

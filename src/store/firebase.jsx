@@ -2,16 +2,9 @@ import { createContext, useContext } from "react";
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, Timestamp, updateDoc, doc } from "firebase/firestore";
+import {firebaseConfig} from "./firebaseconfig"
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC5s-cmy0UqgVLh1ouONzvITn7KGuEXans",
-  authDomain: "myapp-c453a.firebaseapp.com",
-  projectId: "myapp-c453a",
-  storageBucket: "myapp-c453a.appspot.com",
-  messagingSenderId: "29461028004",
-  appId: "1:29461028004:web:d37936f14ee9b03c23da31",
-  measurementId: "G-Q5S5Y6N3FN"
-};
+
 
 const app = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(app);
@@ -71,9 +64,12 @@ export const FirebaseProvider = (props) => {
   };
 
   const listAllUsers = async () => {
-    const usersCollection = collection(firebaseFirestore, "users");
-    const usersSnapshot = await getDocs(usersCollection);
-    return usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const usersCollectionRef = collection(firebaseFirestore, 'users'); // Replace 'users' with your actual collection name
+            const querySnapshot = await getDocs(usersCollectionRef);
+            return querySnapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(), // Extract data from each document
+            }));
   };
 
   const formatTimestamp = (timestamp) => {
